@@ -1,0 +1,19 @@
+//These will be notes for our project for reference
+
+1) Please refer to the login.feature file to copy and paste information when creating your scenarios and user stories
+
+ROLES:         USERNAME           PASSWORD
+users          User1-300          Userpass123
+users          Employee1-300      Employee123
+
+
+Naming Convention: EX- (assumed you worked on "Tasks Module" user story)
+
+Feature files:                tasks_EL_.feature
+Step Definitions Files:       TasksStepDefs.java
+Pages:                        TasksPage.java
+Your Own Branch Name:         US-JIRA ID_ModuleName_YourName  (e.g B30G8-167_Tasks_EL)
+Test Cases On JIRA:           AC01-TC01 Verify user can create a new task under Tasks Module
+
+
+Env URL:    http://qa.symund.com/
