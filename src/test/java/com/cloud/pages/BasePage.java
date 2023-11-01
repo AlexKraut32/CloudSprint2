@@ -4,6 +4,7 @@ package com.cloud.pages;
 
 
 import com.cloud.utilities.BrowserUtils;
+import com.cloud.utilities.ConfigurationReader;
 import com.cloud.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -39,7 +40,7 @@ public abstract class BasePage {
     public WebElement myUser;
 
     public BasePage() {
-        PageFactory.initElements(Driver.getDriver(), this);
+        PageFactory.initElements(Driver.getDriver(ConfigurationReader.getProperty("url")), this);
     }
 
 
@@ -61,7 +62,7 @@ public abstract class BasePage {
      */
     public void waitUntilLoaderScreenDisappear() {
         try {
-            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(ConfigurationReader.getProperty("url")), Duration.ofSeconds(10));
             wait.until(ExpectedConditions.invisibilityOf(loaderMask));
         } catch (Exception e) {
             e.printStackTrace();
@@ -82,19 +83,19 @@ public abstract class BasePage {
         String moduleLocator = "//span[normalize-space()='" + module + "' and contains(@class, 'title title-level-2')]";
         try {
             BrowserUtils.waitForClickablility(By.xpath(tabLocator), 5);
-            WebElement tabElement = Driver.getDriver().findElement(By.xpath(tabLocator));
-            new Actions(Driver.getDriver()).moveToElement(tabElement).pause(200).doubleClick(tabElement).build().perform();
+            WebElement tabElement = Driver.getDriver(ConfigurationReader.getProperty("url")).findElement(By.xpath(tabLocator));
+            new Actions(Driver.getDriver(ConfigurationReader.getProperty("url"))).moveToElement(tabElement).pause(200).doubleClick(tabElement).build().perform();
         } catch (Exception e) {
             BrowserUtils.clickWithWait(By.xpath(tabLocator), 5);
         }
         try {
             BrowserUtils.waitForPresenceOfElement(By.xpath(moduleLocator), 5);
             BrowserUtils.waitForVisibility(By.xpath(moduleLocator), 5);
-            BrowserUtils.scrollToElement(Driver.getDriver().findElement(By.xpath(moduleLocator)));
-            Driver.getDriver().findElement(By.xpath(moduleLocator)).click();
+            BrowserUtils.scrollToElement(Driver.getDriver(ConfigurationReader.getProperty("url")).findElement(By.xpath(moduleLocator)));
+            Driver.getDriver(ConfigurationReader.getProperty("url")).findElement(By.xpath(moduleLocator)).click();
         } catch (Exception e) {
 //            BrowserUtils.waitForStaleElement(Driver.get().findElement(By.xpath(moduleLocator)));
-            BrowserUtils.clickWithTimeOut(Driver.getDriver().findElement(By.xpath(moduleLocator)),  5);
+            BrowserUtils.clickWithTimeOut(Driver.getDriver(ConfigurationReader.getProperty("url")).findElement(By.xpath(moduleLocator)),  5);
         }
     }
 

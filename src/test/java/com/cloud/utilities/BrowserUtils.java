@@ -15,12 +15,11 @@ import java.util.Set;
 
 public class BrowserUtils {
 
-
     /*
-    This method will accept int (in seconds)
-    and execute Thread.sleep method for given duration
-    Arg: int second
-     */
+      This method will accept int (in seconds)
+      and execute Thread.sleep method for given duration
+      Arg: int second
+       */
     public static void sleep(int second){
         second *= 1000;
         try{
@@ -33,28 +32,28 @@ public class BrowserUtils {
     public static void switchWindowAndVerify(String expectedInURL, String expectedInTitle){
 
         //Return and store all window handles in a Set.
-        Set<String> allWindowHandles = Driver.getDriver().getWindowHandles();
+        Set<String> allWindowHandles = Driver.getDriver(ConfigurationReader.getProperty("url")).getWindowHandles();
 
         for (String each : allWindowHandles) {
 
-            Driver.getDriver().switchTo().window(each);
-            System.out.println("Current URL: " + Driver.getDriver().getCurrentUrl());
+            Driver.getDriver(ConfigurationReader.getProperty("url")).switchTo().window(each);
+            System.out.println("Current URL: " + Driver.getDriver(ConfigurationReader.getProperty("url")).getCurrentUrl());
 
-            if (Driver.getDriver().getCurrentUrl().contains(expectedInURL )){
+            if (Driver.getDriver(ConfigurationReader.getProperty("url")).getCurrentUrl().contains(expectedInURL )){
                 break;
             }
         }
 
         //5. Assert:Title contains “Etsy”
-        String actualTitle = Driver.getDriver().getTitle();
+        String actualTitle = Driver.getDriver(ConfigurationReader.getProperty("url")).getTitle();
         Assert.assertTrue(actualTitle.contains(expectedInTitle));
     }
 
     public static void verifyTitle(String expectedTitle){
-        Assert.assertEquals(Driver.getDriver().getTitle(), expectedTitle);
+        Assert.assertEquals(Driver.getDriver(ConfigurationReader.getProperty("url")).getTitle(), expectedTitle);
     }
     public static void verifyTitleContains( String expectedInTitle){
-        Assert.assertTrue(Driver.getDriver().getTitle().contains(expectedInTitle));
+        Assert.assertTrue(Driver.getDriver(ConfigurationReader.getProperty("url")).getTitle().contains(expectedInTitle));
     }
 
     /*
@@ -63,7 +62,7 @@ public class BrowserUtils {
      */
     public static void waitForInvisibilityOf(WebElement target){
         //Create the object of 'WebDriverWait' class, and set up the constructor args
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(ConfigurationReader.getProperty("url")), Duration.ofSeconds(10));
 
         //use the 'wait' object with the proper syntax to create explicit wait conditions.
         wait.until(ExpectedConditions.invisibilityOf(target));
@@ -75,7 +74,7 @@ public class BrowserUtils {
      */
     public static void waitForTitleContains(String title){
         //Create the object of 'WebDriverWait' class, and set up the constructor args
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(ConfigurationReader.getProperty("url")), Duration.ofSeconds(10));
 
         //use the 'wait' object with the proper syntax to create explicit wait conditions.
         wait.until(ExpectedConditions.titleContains(title));
@@ -119,7 +118,7 @@ public class BrowserUtils {
      * @param expectedInURL
      */
     public static void verifyURLContains(String expectedInURL){
-        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedInURL));
+        Assert.assertTrue(Driver.getDriver(ConfigurationReader.getProperty("url")).getCurrentUrl().contains(expectedInURL));
     }
 
     /**
@@ -127,14 +126,14 @@ public class BrowserUtils {
      * @param targetTitle
      */
     public static void switchToWindow(String targetTitle) {
-        String origin = Driver.getDriver().getWindowHandle();
-        for (String handle : Driver.getDriver().getWindowHandles()) {
-            Driver.getDriver().switchTo().window(handle);
-            if (Driver.getDriver().getTitle().equals(targetTitle)) {
+        String origin = Driver.getDriver(ConfigurationReader.getProperty("url")).getWindowHandle();
+        for (String handle : Driver.getDriver(ConfigurationReader.getProperty("url")).getWindowHandles()) {
+            Driver.getDriver(ConfigurationReader.getProperty("url")).switchTo().window(handle);
+            if (Driver.getDriver(ConfigurationReader.getProperty("url")).getTitle().equals(targetTitle)) {
                 return;
             }
         }
-        Driver.getDriver().switchTo().window(origin);
+        Driver.getDriver(ConfigurationReader.getProperty("url")).switchTo().window(origin);
     }
 
     /**
@@ -143,7 +142,7 @@ public class BrowserUtils {
      * @param element on which to hover
      */
     public static void hover(WebElement element) {
-        Actions actions = new Actions(Driver.getDriver());
+        Actions actions = new Actions(Driver.getDriver(ConfigurationReader.getProperty("url")));
         actions.moveToElement(element).perform();
     }
 
@@ -169,7 +168,7 @@ public class BrowserUtils {
      */
     public static List<String> getElementsText(By locator) {
 
-        List<WebElement> elems = Driver.getDriver().findElements(locator);
+        List<WebElement> elems = Driver.getDriver(ConfigurationReader.getProperty("url")).findElements(locator);
         List<String> elemTexts = new ArrayList<>();
 
         for (WebElement el : elems) {
@@ -199,7 +198,7 @@ public class BrowserUtils {
      * @return
      */
     public static WebElement waitForVisibility(WebElement element, int time) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(time));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(ConfigurationReader.getProperty("url")), Duration.ofSeconds(time));
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
@@ -211,7 +210,7 @@ public class BrowserUtils {
      * @return
      */
     public static WebElement waitForVisibility(By locator, int time) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(time));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(ConfigurationReader.getProperty("url")), Duration.ofSeconds(time));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
@@ -223,7 +222,7 @@ public class BrowserUtils {
      * @return
      */
     public static WebElement waitForClickablility(WebElement element, int time) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(time));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(ConfigurationReader.getProperty("url")), Duration.ofSeconds(time));
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
@@ -235,7 +234,7 @@ public class BrowserUtils {
      * @return
      */
     public static WebElement waitForClickablility(By locator, int time) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(time));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(ConfigurationReader.getProperty("url")), Duration.ofSeconds(time));
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
@@ -251,7 +250,7 @@ public class BrowserUtils {
             }
         };
         try {
-            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(time));
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(ConfigurationReader.getProperty("url")), Duration.ofSeconds(time));
             wait.until(expectation);
         } catch (Throwable error) {
             error.printStackTrace();
@@ -266,7 +265,7 @@ public class BrowserUtils {
      */
     public static void verifyElementDisplayed(By by) {
         try {
-            Assert.assertTrue("Element not visible: " + by, Driver.getDriver().findElement(by).isDisplayed());
+            Assert.assertTrue("Element not visible: " + by, Driver.getDriver(ConfigurationReader.getProperty("url")).findElement(by).isDisplayed());
         } catch (NoSuchElementException e) {
             e.printStackTrace();
             Assert.fail("Element not found: " + by);
@@ -282,7 +281,7 @@ public class BrowserUtils {
      */
     public static void verifyElementNotDisplayed(By by) {
         try {
-            Assert.assertFalse("Element should not be visible: " + by, Driver.getDriver().findElement(by).isDisplayed());
+            Assert.assertFalse("Element should not be visible: " + by, Driver.getDriver(ConfigurationReader.getProperty("url")).findElement(by).isDisplayed());
         } catch (NoSuchElementException e) {
             e.printStackTrace();
 
@@ -344,8 +343,8 @@ public class BrowserUtils {
      * @param element
      */
     public static void clickWithJS(WebElement element) {
-        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
-        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+        ((JavascriptExecutor) Driver.getDriver(ConfigurationReader.getProperty("url"))).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) Driver.getDriver(ConfigurationReader.getProperty("url"))).executeScript("arguments[0].click();", element);
     }
 
 
@@ -355,7 +354,7 @@ public class BrowserUtils {
      * @param element
      */
     public static void scrollToElement(WebElement element) {
-        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) Driver.getDriver(ConfigurationReader.getProperty("url"))).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
     /**
@@ -364,7 +363,7 @@ public class BrowserUtils {
      * @param element
      */
     public static void doubleClick(WebElement element) {
-        new Actions(Driver.getDriver()).doubleClick(element).build().perform();
+        new Actions(Driver.getDriver(ConfigurationReader.getProperty("url"))).doubleClick(element).build().perform();
     }
 
     /**
@@ -375,7 +374,7 @@ public class BrowserUtils {
      * @param attributeValue
      */
     public static void setAttribute(WebElement element, String attributeName, String attributeValue) {
-        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].setAttribute(arguments[1], arguments[2]);", element, attributeName, attributeValue);
+        ((JavascriptExecutor) Driver.getDriver(ConfigurationReader.getProperty("url"))).executeScript("arguments[0].setAttribute(arguments[1], arguments[2]);", element, attributeName, attributeValue);
     }
 
     /**
@@ -383,9 +382,9 @@ public class BrowserUtils {
      * @param element
      */
     public static void highlight(WebElement element) {
-        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
+        ((JavascriptExecutor) Driver.getDriver(ConfigurationReader.getProperty("url"))).executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
         waitFor(1);
-        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].removeAttribute('style', 'background: yellow; border: 2px solid red;');", element);
+        ((JavascriptExecutor) Driver.getDriver(ConfigurationReader.getProperty("url"))).executeScript("arguments[0].removeAttribute('style', 'background: yellow; border: 2px solid red;');", element);
     }
 
     /**
@@ -429,7 +428,7 @@ public class BrowserUtils {
      * @param element
      */
     public static void executeJScommand(WebElement element, String command) {
-        JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
+        JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver(ConfigurationReader.getProperty("url"));
         jse.executeScript(command, element);
 
     }
@@ -440,7 +439,7 @@ public class BrowserUtils {
      * @param command
      */
     public static void executeJScommand(String command) {
-        JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
+        JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver(ConfigurationReader.getProperty("url"));
         jse.executeScript(command);
 
     }
@@ -459,7 +458,7 @@ public class BrowserUtils {
         while (counter < attempts) {
             try {
                 //selenium must look for element again
-                clickWithJS(Driver.getDriver().findElement(by));
+                clickWithJS(Driver.getDriver(ConfigurationReader.getProperty("url")).findElement(by));
                 //if click is successful - then break
                 break;
             } catch (WebDriverException e) {
@@ -481,8 +480,9 @@ public class BrowserUtils {
      * @param time
      */
     public static void waitForPresenceOfElement(By by, long time) {
-        new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(time)).until(ExpectedConditions.presenceOfElementLocated(by));
+        new WebDriverWait(Driver.getDriver(ConfigurationReader.getProperty("url")), Duration.ofSeconds(time)).until(ExpectedConditions.presenceOfElementLocated(by));
     }
+
 
 
 }
