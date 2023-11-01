@@ -1,6 +1,5 @@
 package com.cloud.step_definitions;
 
-import com.cloud.pages.US001HomePage;
 import com.cloud.pages.US001LoginPage;
 import com.cloud.utilities.BrowserUtils;
 import com.cloud.utilities.Driver;
@@ -32,6 +31,41 @@ public class US001StepDefs {
     public void user_landing_on_the_home_page() {
 
         BrowserUtils.verifyTitle("Dashboard - Symund - QA");
+    }
+
+    @Then("user check if all Modules presented on the page")
+    public void user_check_if_all_modules_presented_on_the_page() {
+
+    }
+    @Then("user check if Username is showing on the Home page")
+    public void user_check_if_username_is_showing_on_the_home_page() {
+
+    }
+
+    @Then("user click on Customize button")
+    public void user_click_on_customize_button() {
+
+    }
+    @Then("select any of the Widgets")
+    public void select_any_of_the_widgets() {
+
+    }
+    @Then("user check if selected Widgets presented on the Home page")
+    public void user_check_if_selected_widgets_presented_on_the_home_page() {
+
+    }
+
+    @Then("user click on Set Status button")
+    public void user_click_on_set_status_button() {
+
+    }
+    @Then("select any of the Status options")
+    public void select_any_of_the_status_options() {
+
+    }
+    @Then("user check if selected Status option is showing on the page")
+    public void user_check_if_selected_status_option_is_showing_on_the_page() {
+
     }
 
 }
