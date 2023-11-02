@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.Wait;
 
 public class TalkModuleStepDefinitions {
     TalkModulePage taskPage = new TalkModulePage();
@@ -45,9 +46,8 @@ public class TalkModuleStepDefinitions {
 
     @When("I select My Conversation from my contacts and added to the conversation")
     public void iSelectMyConversationFromMyContactsAndAddedToTheConversation() {
-        BrowserUtils.waitFor(3);
+        BrowserUtils.waitFor(5);
         taskPage.CreateConvBtn.click();
-        BrowserUtils.waitFor(3);
         BrowserUtils.waitFor(5);
         taskPage.closeBtn.click();
 
@@ -59,15 +59,22 @@ public class TalkModuleStepDefinitions {
 
     }
 
-    @Then("the conversation is permanently removed from the Talk module")
-    public void theConversationIsPermanentlyRemovedFromTheTalkModule() {
+    @When("I choose to delete the conversation")
+    public void iChooseToDeleteTheConversation() {
         taskPage.menuBtn.click();
         taskPage.deleteBtn.click();
         taskPage.clickBtn.click();
+
     }
 
-    @When("I choose to delete the conversation")
-    public void iChooseToDeleteTheConversation() {
+    @Then("the conversation is permanently removed from the Talk module")
+    public void theConversationIsPermanentlyRemovedFromTheTalkModule() {
+
+
+
+
+
+
 
 
 

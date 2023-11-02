@@ -3,6 +3,7 @@ package com.cloud.step_definitions;
 import com.cloud.pages.LoginPage;
 import com.cloud.utilities.ConfigurationReader;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,6 +38,7 @@ public class LoginStepDefs {
         LoginPage loginPage=new LoginPage();
         loginPage.login(username,password);
     }
+
 
 }
 /*
