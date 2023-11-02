@@ -1,5 +1,6 @@
 package com.cloud.step_definitions;
 
+import com.cloud.pages.US001HomePage;
 import com.cloud.pages.US001LoginPage;
 import com.cloud.utilities.BrowserUtils;
 import com.cloud.utilities.Driver;
@@ -7,11 +8,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class US001StepDefs {
     US001LoginPage us001LoginPage = new US001LoginPage();
+    US001HomePage us001HomePage = new US001HomePage();
+    Boolean statusButtonDisplayed = false;
 
     @Given("user go to the login page")
     public void user_go_to_the_login_page() {
@@ -51,6 +55,11 @@ public class US001StepDefs {
 
     @Then("user click on Customize button")
     public void user_click_on_customize_button() {
+        if (us001HomePage.statusButton.isDisplayed()){
+            statusButtonDisplayed=true;
+        }
+
+
         WebElement customizeButton = Driver.getDriver().findElement(By.xpath("//a[.='Customize']"));
         customizeButton.click();
 
@@ -59,15 +68,13 @@ public class US001StepDefs {
     @And("select Widgets - {string} and {string} and check if selected Widgets presented on the Home page")
     public void selectWidgetsAndAndCheckIfSelectedWidgetsPresentedOnTheHomePage(String arg0, String arg1) {
         WebElement checkboxCalendar = Driver.getDriver().findElement(By.xpath("//label[@for='panel-checkbox-" + arg0 + "']"));
-
         checkboxCalendar.click();
         checkboxCalendar.isSelected();
         WebElement checkboxSpreed = Driver.getDriver().findElement(By.xpath("//label[@for='panel-checkbox-" + arg1 + "']"));
         checkboxSpreed.click();
         checkboxSpreed.isSelected();
         Driver.getDriver().navigate().back();
-
-
+        Assert.assertTrue("status button is not displayed", statusButtonDisplayed);
 
 
     }
