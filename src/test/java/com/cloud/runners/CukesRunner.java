@@ -10,8 +10,12 @@ import org.junit.runner.RunWith;
                 "html:target/cucumber-reports.html",
                 "rerun:target/rerun.txt",
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber",
-                "json:target/cucumber.json"
+        B30G8_US_006_TalkModul
+               
 
+          "json:target/cucumber-reports.json"
+              
+        master
         },
         features = "src/test/resources/features",
         glue = "com/cloud/step_definitions",

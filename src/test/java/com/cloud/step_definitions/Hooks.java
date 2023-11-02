@@ -31,6 +31,7 @@ public class Hooks {
 
    //@Before (value = "@login", order = 2 )
     public void login_scenario_before(){
+
         System.out.println("---> @Before: RUNNING BEFORE EACH SCENARIO");
     }
 
@@ -46,8 +47,6 @@ public class Hooks {
             scenario.attach(screenshot, "image/png", scenario.getName());
 
         }
-
-
 
         BrowserUtils.sleep(2);
         Driver.closeDriver();
