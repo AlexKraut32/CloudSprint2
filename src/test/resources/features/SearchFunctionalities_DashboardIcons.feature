@@ -1,5 +1,5 @@
 @B30G8-108
-Feature: Default
+Feature: Search functionalities and dashboard icon
 
 	
 	@B30G8-107
@@ -15,6 +15,7 @@ Feature: Default
 	
 	@B30G8-109
 	Scenario: Verify user can navigate to dashboard from app icon
+		Given the user logged in as "User"
 		Given user is on any page other than dashboard
 		    When user can see app icon in left corner
 		    And user clicks on app icon
