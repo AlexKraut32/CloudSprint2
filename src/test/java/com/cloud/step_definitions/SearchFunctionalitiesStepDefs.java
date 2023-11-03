@@ -1,6 +1,5 @@
 package com.cloud.step_definitions;
 
-import com.cloud.pages.LoginPage;
 import com.cloud.pages.SearchFunctionalitiesPage;
 import com.cloud.utilities.BrowserUtils;
 import com.cloud.utilities.Driver;
@@ -14,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 
-public class US009_1{
+public class SearchFunctionalitiesStepDefs {
 
 
     SearchFunctionalitiesPage searchFunctionalitiesPage = new SearchFunctionalitiesPage();
