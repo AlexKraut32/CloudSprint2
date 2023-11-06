@@ -1,14 +1,13 @@
-
+@B30G8-136
 Feature: Default
 
 	Background:
 		Given user go to the login page
 		When user enters "User44" and a "Userpass123"
 		Then user click Log in button
-		And user landing on the Home pageB
-
+		And user landing on the Home page
 	
-
+	@B30G8-133
 	Scenario: User can create a new group under Contacts Module
 		Scenario: User can create a new group under Contacts Module
 				Given User is on Contacts page
@@ -21,7 +20,7 @@ Feature: Default
 				      Then User should create new contact and add to the groups	
 
 	
-
+	@B30G8-134
 	Scenario: User can see all the available groups name through the group’s dropdown menu existing in the contact’s own info menu
 		Scenario: User can see all the available groups name through the group’s dropdown menu existing in the contact’s own info menu
 				Given User is on Contacts page
@@ -33,7 +32,7 @@ Feature: Default
 				      | Theatre|	
 
 	
-
+	@B30G8-135
 	Scenario: User can add a new property as “Anniversary” to the contact’s info page from the “Add new property” dropdown menu.
 		Scenario: User can add a new property as “Anniversary” to the contact’s info page from the “Add new property” dropdown menu.
 				Given User is on Contacts page

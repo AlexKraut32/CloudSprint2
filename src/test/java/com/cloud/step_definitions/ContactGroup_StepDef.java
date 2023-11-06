@@ -63,15 +63,21 @@ public class ContactGroup_StepDef {
         contactGroupPage.createButton.click();
         contactGroupPage.inputArea.sendKeys(groupList.get(2), Keys.ENTER);
     }
+    @Then("User should create new contact and add to the groups")
+    public void userShouldCreateNewContactAndAddToTheGroups() {
+        contactGroupPage.allContacts.click();
+
+            contactGroupPage.groupsDropdown.click();
+            contactGroupPage.cinema.click();
+            contactGroupPage.music.click();
+            contactGroupPage.theatre.click();
+
+
+    }
 
     @Given("User clicks All contacts module")
     public void userClicksAllContactsModule() {
         contactGroupPage.allContacts.click();
-    }
-
-    @When("User clicks Create contacts button")
-    public void userClicksCreateContactsButton() {
-        contactGroupPage.createContactButton.click();
     }
 
     @And("User clicks Groups dropdown menu")
@@ -81,8 +87,9 @@ public class ContactGroup_StepDef {
 
     @Then("User can see all the available groups name")
     public void userCanSeeAllTheAvailable(List<String> groupList) {
-      List<String> dropdownGroups =  BrowserUtils.dropdownOptions_as_STRING(contactGroupPage.groupsDropdown);
-        Assert.assertEquals(groupList,dropdownGroups);
+      Assert.assertEquals(groupList.get(0),contactGroupPage.cinema.getText());
+      Assert.assertEquals(groupList.get(1),contactGroupPage.music.getText());
+      Assert.assertEquals(groupList.get(2),contactGroupPage.theatre.getText());
     }
 
     @Given("User clicks Add property dropdown menu")
@@ -99,4 +106,5 @@ public class ContactGroup_StepDef {
     public void userCanSeeBlock() {
         contactGroupPage.anniversaryTitle.isDisplayed();
     }
+
 }

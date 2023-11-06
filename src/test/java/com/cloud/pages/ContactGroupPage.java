@@ -34,11 +34,23 @@ public class ContactGroupPage {
     @FindBy(id = "everyone")
     public WebElement allContacts;
 
-    @FindBy(className = "primary")
+    @FindBy(xpath = "//a[@class='app-navigation-entry-link']")
     public WebElement createContactButton;
 
-    @FindBy(className = "multiselect__input")
+    @FindBy(id = "contact-title")
+    public WebElement companyName;
+
+    @FindBy(xpath = "//div[@class='multiselect property__value multiselect--multiple']")
     public WebElement groupsDropdown;
+    @FindBy(xpath = "//div[@title='Cinema']")
+    public WebElement cinema;
+
+    @FindBy(xpath = "//div[@title='Music']")
+    public WebElement music;
+
+    @FindBy(xpath = "//div[@title='Theatre']")
+    public WebElement theatre;
+
 
     @FindBy(xpath = "//input[@placeholder='Choose property type']")
     public WebElement addNewProperty;
