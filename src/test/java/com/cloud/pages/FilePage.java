@@ -1,5 +1,6 @@
 package com.cloud.pages;
 
+import com.cloud.utilities.ConfigurationReader;
 import com.cloud.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +10,7 @@ public class FilePage {
 
 
     public FilePage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(ConfigurationReader.getProperty("url")),this);
     }
     @FindBy(xpath = "(//li[@data-id='files'])[1]")
     public WebElement fileModule;

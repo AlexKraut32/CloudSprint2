@@ -1,5 +1,6 @@
 package com.cloud.pages;
 
+import com.cloud.utilities.ConfigurationReader;
 import com.cloud.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 public class DeckPage {
 
     public  DeckPage() {
-        PageFactory.initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(ConfigurationReader.getProperty("url")),this);
     }
 @FindBy(xpath = "(//li[@data-id='deck'])[1]")
     public WebElement deckBtn;

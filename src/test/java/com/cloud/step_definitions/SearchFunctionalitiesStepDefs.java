@@ -2,6 +2,7 @@ package com.cloud.step_definitions;
 
 import com.cloud.pages.SearchFunctionalitiesPage;
 import com.cloud.utilities.BrowserUtils;
+import com.cloud.utilities.ConfigurationReader;
 import com.cloud.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -38,7 +39,7 @@ public class SearchFunctionalitiesStepDefs {
 
         searchFunctionalitiesPage.searchBar.sendKeys("files");
 
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(ConfigurationReader.getProperty("url")), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(searchFunctionalitiesPage.filesOptionAfterSearch));
 
         searchFunctionalitiesPage.searchBar.sendKeys(Keys.ENTER);
@@ -54,7 +55,7 @@ public class SearchFunctionalitiesStepDefs {
     @When("user opens sidebar")
     public void user_opens_sidebar() {
 
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(ConfigurationReader.getProperty("url")), Duration.ofSeconds(10));
 
         wait.until(ExpectedConditions.visibilityOf(searchFunctionalitiesPage.buttonForOpenSideBarOption));
         searchFunctionalitiesPage.buttonForOpenSideBarOption.click();

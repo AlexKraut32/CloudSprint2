@@ -10,10 +10,8 @@ import org.junit.runner.RunWith;
                 "html:target/cucumber-reports.html",
                 "rerun:target/rerun.txt",
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber",
-        B30G8_US_006_TalkModul
                
-
-          "json:target/cucumber-reports.json"
+                "json:target/cucumber-reports.json"
               
       
         },
@@ -21,10 +19,7 @@ import org.junit.runner.RunWith;
         glue = "com/cloud/step_definitions",
 
         dryRun =false,
-        tags = "@B30G8-125",
-
-        dryRun = false,
-        tags = " @B30G8-126",
+        tags = "@B30G8-124",
 
         publish = true //generating a report with public link
 )

@@ -73,7 +73,7 @@ DeckPage deckPage = new DeckPage();
     }
     @When("User click on any board and plus button")
     public void user_click_on_any_board_and_plus_button() {
-        Actions actions = new Actions(Driver.getDriver());
+        Actions actions = new Actions(Driver.getDriver(ConfigurationReader.getProperty("url")));
         actions.moveToElement(deckPage.newBoard).click().perform();
 
         deckPage.addListBTn.click();
@@ -92,7 +92,7 @@ deckPage.listNameInput.sendKeys(listName);
     public void user_click_on_add_card_button() {
         deckPage.deckBtn.click();
        // deckPage.upcomingCard.click();
-        Actions actions = new Actions(Driver.getDriver());
+        Actions actions = new Actions(Driver.getDriver(ConfigurationReader.getProperty("url")));
         actions.moveToElement(deckPage.newBoard).click().perform();
 
         deckPage.addListBTn.click();
@@ -117,7 +117,7 @@ deckPage.listNameInput.sendKeys(listName);
     public void user_click_on_three_dots() {
         deckPage.deckBtn.click();
         // deckPage.upcomingCard.click();
-        Actions actions = new Actions(Driver.getDriver());
+        Actions actions = new Actions(Driver.getDriver(ConfigurationReader.getProperty("url")));
         actions.moveToElement(deckPage.newBoard).click().perform();
 
         deckPage.addListBTn.click();

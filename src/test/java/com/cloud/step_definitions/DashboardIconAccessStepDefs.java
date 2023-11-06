@@ -1,6 +1,7 @@
 package com.cloud.step_definitions;
 
 import com.cloud.pages.DashboardPage;
+import com.cloud.utilities.ConfigurationReader;
 import com.cloud.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,7 +18,7 @@ public class DashboardIconAccessStepDefs {
 
         List<WebElement> webElements = new ArrayList<>();
 
-        Actions actions = new Actions(Driver.getDriver());
+        Actions actions = new Actions(Driver.getDriver(ConfigurationReader.getProperty("url")));
 
     @Given("user is on any page other than dashboard")
     public void user_is_on_any_page_other_than_dashboard() {
@@ -45,7 +46,7 @@ public class DashboardIconAccessStepDefs {
 
         }
 
-        Assert.assertFalse(Driver.getDriver().getTitle().contains("Dashboard - Symund - QA")); // ensure title of page is NOT dashboard title
+        Assert.assertFalse(Driver.getDriver(ConfigurationReader.getProperty("url")).getTitle().contains("Dashboard - Symund - QA")); // ensure title of page is NOT dashboard title
 
     }
 
