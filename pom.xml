@@ -19,8 +19,13 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
+B30G8-80_US-001DashboardFunctionality_Eugene
+
             <version>4.12.1</version>
+master
         </dependency>
+        <!-- "By Eugene" - Got WebDriver error (Chrome not starting),
+         changed selenium version from 4.9.1 to 4.14.1  -->
 
         <dependency>
             <groupId>io.cucumber</groupId>
