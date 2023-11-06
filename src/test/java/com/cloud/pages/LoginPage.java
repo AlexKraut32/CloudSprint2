@@ -13,12 +13,12 @@ public class LoginPage {
     }
 
     @FindBy(id="user")
-    public WebElement userName;
+    public WebElement userName; //
 
     @FindBy(id="password")
     public WebElement password;
 
-    @FindBy(name = "submit-form")
+    @FindBy(id="submit-form")
     public WebElement submit;
 
 
