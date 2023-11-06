@@ -23,7 +23,6 @@ public class SearchFunctionalitiesStepDefs {
 
         BrowserUtils.verifyTitle("Dashboard - Symund - QA");
 
-
     }
     @When("user clicks on search bar")
     public void user_clicks_on_search_bar() {
