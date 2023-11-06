@@ -6,12 +6,11 @@ package com.cloud.step_definitions;
 import com.cloud.utilities.BrowserUtils;
 import com.cloud.utilities.ConfigurationReader;
 import com.cloud.utilities.Driver;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
+import io.cucumber.java.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+import java.io.IOException;
 import java.time.Duration;
 
 /*
@@ -27,6 +26,10 @@ public class Hooks {
         Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+
+
+
+
     }
 
     //@Before (value = "@login", order = 2 )
@@ -53,15 +56,18 @@ public class Hooks {
 
     }
 
-    //@BeforeStep
+   // @BeforeStep
     public void setupStep(){
         System.out.println("-----> @BeforeSTEP : Running before each step!");
+
     }
 
     //@AfterStep
     public void teardownStep(){
         System.out.println("-----> @AfterSTEP : Running after each step!");
+
     }
+
 
 
 }
