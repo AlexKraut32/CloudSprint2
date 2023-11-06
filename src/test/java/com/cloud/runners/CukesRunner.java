@@ -15,12 +15,17 @@ import org.junit.runner.RunWith;
 
           "json:target/cucumber-reports.json"
               
-        master
+      
         },
         features = "src/test/resources/features",
         glue = "com/cloud/step_definitions",
+
         dryRun =false,
-        tags = "@B30G8-104",
+        tags = "@B30G8-125",
+
+        dryRun = false,
+        tags = " @B30G8-126",
+
         publish = true //generating a report with public link
 )
 public class CukesRunner {}
